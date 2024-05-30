@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellipse Construction</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function buildEllipse() {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            var a = parseFloat(document.getElementById("majorAxis").value);
+            var b = parseFloat(document.getElementById("minorAxis").value);
+
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+
+            // Draw axes
+            context.beginPath();
+            context.moveTo(centerX, 0);
+            context.lineTo(centerX, canvas.height);
+            context.moveTo(0, centerY);
+            context.lineTo(canvas.width, centerY);
+            context.strokeStyle = "gray";
+            context.stroke();
+
+            // Draw ellipse
+            context.beginPath();
+            context.ellipse(centerX, centerY, a, b, 0, 0, 2 * Math.PI);
+            context.strokeStyle = "black";
+            context.stroke();
+        }
+    </script>
+</head>
+<body>
+    <h1>Ellipse Construction</h1>
+    <p>Enter the lengths of the major and minor axes:</p>
+    <label for="majorAxis">Major Axis (a):</label>
+    <input type="number" id="majorAxis" min="1"><br><br>
+    <label for="minorAxis">Minor Axis (b):</label>
+    <input type="number" id="minorAxis" min="1"><br><br>
+    <button onclick="buildEllipse()">Build Ellipse</button><br><br>
+    <canvas id="canvas" width="400" height="300"></canvas>
+</body>
+</html>

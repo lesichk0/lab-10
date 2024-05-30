@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        img {
+            width: 500px;
+            height: 400px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        var photos = {};
+        photos["forest"] = new Image(400, 550);
+        photos["forest"].src = "https://images.nationalgeographic.org/image/upload/v1638892272/EducationHub/photos/hoh-river-valley.jpg";
+
+        photos["mountain"] = new Image(400, 550);
+        photos["mountain"].src = "https://cdn.britannica.com/88/158788-050-314EBC88/Mount-Triumph-height-North-Cascades-National-Park.jpg";
+
+        photos["beach"] = new Image(400, 550);
+        photos["beach"].src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Beach_at_Fort_Lauderdale.jpg/1200px-Beach_at_Fort_Lauderdale.jpg";
+
+        function viewPhoto(select) {
+            var selectedOption = select.options[select.selectedIndex].value;
+            document.getElementById("photo").src = photos[selectedOption].src;
+        }
+    </script>
+</head>
+<body>
+    <h1>Photo Gallery</h1>
+    <p>Select a photo:</p>
+    <select onchange="viewPhoto(this)">
+        <option value="forest">Forest</option>
+        <option value="mountain">Mountain</option>
+        <option value="beach">Beach</option>
+    </select>
+    <br><br>
+    <img id="photo" src="https://images.nationalgeographic.org/image/upload/v1638892272/EducationHub/photos/hoh-river-valley.jpg" alt="Selected Photo">
+</body>
+</html>
